@@ -17,15 +17,15 @@ const questions = [
         // THEN this is displayed as the title of the README
         type: 'input',
         name: 'title',
-        message: 'What is the title of this project?',
-        validate: title => {
-            if (title) {
-                return true;
-            } else {
-                console.log('Please enter the title for your project.');
-                return false;
-            }
-        }
+        message: 'What is the title of this project?'
+        // validate: title => {
+        //     if (title) {
+        //         return true;
+        //     } else {
+        //         console.log('Please enter the title for your project.');
+        //         return false;
+        //     }
+        // }
     },
     // WHEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions
     // THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests
@@ -78,17 +78,17 @@ const questions = [
     }
 ];
 
-
-
-
-
-
-
 // WHEN I click on the links in the Table of Contents
 // THEN I am taken to the corresponding section of the README
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) { }
+const writeToFile = fileContent => { 
+    fs.writeFile('./dist/readme.md', fileContent, err => {
+        if (err) throw err;
+
+        console.log('readme complete!?');
+    })
+}
 
 // TODO: Create a function to initialize app
 function init() {
@@ -96,16 +96,13 @@ function init() {
     inquirer
         .prompt(questions)
         .then(data => {
-            console.log(data);
+            return generateMarkdown(data);
+        })
+        .then(data => {
+            writeToFile(data);
             return data;
         })
-        .then(mdPage => {
-            return generateMarkdown(mdPage);
-        })
-        .then(markdownResponse => {
-            console.log(markdownResponse);
-            return markdownResponse
-        })
+        
     // destructure the object
     // write file
     // save file
