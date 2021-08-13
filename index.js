@@ -1,7 +1,8 @@
 // GIVEN a command-line application that accepts user input
 // TODO: Include packages needed for this application
+const fs = require('fs');
 const inquirer = require('inquirer');
-
+const generateMarkdown = require('./utils/generateMarkdown');
 // WHEN I am prompted for information about my application repository
 // THEN a high-quality, professional README.md is generated with the title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
 //
@@ -91,11 +92,31 @@ function writeToFile(fileName, data) { }
 
 // TODO: Create a function to initialize app
 function init() {
-    inquirer.prompt(questions)
-}
+
+    inquirer
+        .prompt(questions)
+        .then(data => {
+            console.log(data);
+            return data;
+        })
+        .then(mdPage => {
+            return generateMarkdown(mdPage);
+        })
+        .then(markdownResponse => {
+            console.log(markdownResponse);
+            return markdownResponse
+        })
+    // destructure the object
+    // write file
+    // save file
+    // add styling page to file
+    // generate markdown file
+};
 
 // Function call to initialize app
-init();
+init()
+    
+    
 
 
 
