@@ -95,13 +95,14 @@ function init() {
 
     inquirer
         .prompt(questions)
-        .then(data => {
-            return generateMarkdown(data);
-        })
-        .then(data => {
-            writeToFile(data);
-            return data;
-        })
+        .then(answers => console.log(answers));
+        // .then(data => {
+        //     return generateMarkdown(data);
+        // })
+        // .then(data => {
+        //     writeToFile(data);
+        //     return data;
+        // })
         
     // destructure the object
     // write file
