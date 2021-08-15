@@ -17,27 +17,43 @@ const questions = [
         // THEN this is displayed as the title of the README
         type: 'input',
         name: 'title',
-        message: 'What is the title of this project?'
-        // validate: title => {
-        //     if (title) {
-        //         return true;
-        //     } else {
-        //         console.log('Please enter the title for your project.');
-        //         return false;
-        //     }
-        // }
+        message: 'What is the title of this project?',
+        validate: title => {
+            if (title) {
+                return true;
+            } else {
+                console.log('Please enter the title for your project.');
+                return false;
+            }
+        }
     },
     // WHEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions
     // THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests
     {
         type: 'input',
         name: 'description',
-        message: 'Describe your project.'
+        message: 'Describe your project.',
+        validate: description => {
+            if (description) {
+                return true;
+            } else {
+                console.log('Please write a detailed description of your project.');
+                return false;
+            }
+        }
     },
     {
         type: 'input',
         name: 'installation',
-        message: 'Describe in detail the installation instructions.'
+        message: 'Describe in detail the installation instructions.',
+        validate: installation => {
+            if (installation) {
+                return true;
+            } else {
+                console.log('Please enter installation instructions for your project.');
+                return false;
+            }
+        }
     },
     {
         type: 'input',
@@ -60,7 +76,13 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'Please choose a license for your project.',
-        choices: ['MIT License', 'GNU Lesser General Public License', 'Mozilla Public License', 'GNU Affero General Public License', 'The Unlicense', 'Apache License', 'GNU General Public License']
+        choices: ['Apache',
+        'Academic',
+        'GNU',
+        'ISC',
+        'MIT',
+        'Mozilla',
+        'Open']
     },
     {
         // WHEN I enter my GitHub username
@@ -78,11 +100,44 @@ const questions = [
     }
 ];
 
+const addInfo = [
+    {
+        type: 'confirm',
+        name: 'addOnConfirm',
+        message: 'Would you like to add anything else?'
+    },
+    {
+        type: 'input',
+        name: 'addTitle',
+        message: 'What is the title of this section?',
+        when: ({ addOnConfirm }) => {
+            if (addOnConfirm) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'addDescription',
+        message: 'Enter the content for this section.',
+        when: ({ addOnConfirm }) => {
+            if (addOnConfirm) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+]
+
 // WHEN I click on the links in the Table of Contents
 // THEN I am taken to the corresponding section of the README
 
 // TODO: Create a function to write README file
-const writeToFile = fileContent => { 
+const writeToFile = fileContent => {
     fs.writeFile('./dist/readme.md', fileContent, err => {
         if (err) throw err;
 
@@ -90,20 +145,22 @@ const writeToFile = fileContent => {
     })
 }
 
+
 // TODO: Create a function to initialize app
 function init() {
 
     inquirer
         .prompt(questions)
-        .then(answers => console.log(answers));
-        // .then(data => {
-        //     return generateMarkdown(data);
-        // })
-        // .then(data => {
-        //     writeToFile(data);
-        //     return data;
-        // })
-        
+        .then(questions[9])
+        .then(answers => {
+            console.log(answers);
+            return generateMarkdown(answers);
+        })
+        .then(answers => {
+            writeToFile(answers);
+            return answers;
+        })
+
     // destructure the object
     // write file
     // save file
@@ -113,8 +170,8 @@ function init() {
 
 // Function call to initialize app
 init()
-    
-    
+
+
 
 
 

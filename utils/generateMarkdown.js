@@ -11,12 +11,15 @@ function renderLicenseLink(license) { }
 function renderLicenseSection(license) { }
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
+// WHEN I click on the links in the Table of Contents
+// THEN I am taken to the corresponding section of the README
+
+function generateMarkdown(answers) {
   return `
-# ${data.title}
+# ${answers.title}
 
 
-## Table of Contents
+## Table of Contents 👀
 - [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -24,25 +27,45 @@ function generateMarkdown(data) {
 - [Tests](#tests)
 - [License](#license)
 - [Connect](#connect)
+<br>
+<br>
 
-## Description
-${data.description}
+## Description 🗒
+${answers.description}
+<br>
+<br>
 
-## Installation
-${data.installation}
+## Installation ✅
+${answers.installation}
+<br>
+<br>
 
-## Usage
-${data.usage}
+## Usage 💻
+${answers.usage}
+<br>
+<br>
 
-## Tests
-${data.tests}
+## Tests 📈
+${answers.tests}
+<br>
+<br>
 
-## License
-${data.license}
+## Contribution 👥
+${answers.contribution}
+<br>
+<br>
 
-## Connect
-${data.github}<br>
-${data.email}
+## License ©
+![badge](https://img.shields.io/badge/license-${answers.license}-brightgreen)
+<br>
+This application is under the ${answers.license} license.
+<br>
+<br>
+
+## Connect 📧
+Questions or comments? Please reach out!<br>
+*GitHub: github.com/${answers.github}*<br>
+*Email: ${answers.email}*
 `;
 }
 
