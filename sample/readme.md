@@ -1,5 +1,5 @@
 
-# My First Node.js Project
+# My Project Title
 ![badge](https://img.shields.io/badge/license-MIT-brightgreen)
 
 
@@ -15,27 +15,27 @@
 <br>
 
 ## Description 🗒
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+This is where you would describe your application with some detail.
 <br>
 <br>
 
 ## Installation ✅
-numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+This is where you write out step by step how to install the application
 <br>
 <br>
 
 ## Usage 💻
-optio, eaque rerum! Provident similique accusantium nemo autem. Reprehenderit,
+This is where you would provide examples and how to use the application
 <br>
 <br>
 
 ## Tests 📈
-sapiente officiis modi at sunt excepturi expedita sint?
+Testing testing
 <br>
 <br>
 
 ## Contribution 👥
-quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos 
+This is where you explain how another developer can contribute to this project
 <br>
 <br>
 
