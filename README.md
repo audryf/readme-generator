@@ -12,7 +12,7 @@
 
 ## Description
 🗒
-A node.js application that allows you to just answer the prompts and receive a `README.md` that is ready to go!
+A node.js application that allows you to just answer the prompts and receive a `README.md` that is ready to go! See a sample in the `sample` folder or [here](./sample/readme.md)
 <br>
 <br>
 
